@@ -1,0 +1,327 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+  <meta name="description" content="박현규 ♥ 최지원 결혼 알림장">
+  <meta property="og:title" content="박현규 ♥ 최지원 결혼합니다">
+  <meta property="og:description" content="저희 두 사람이 사랑으로 하나 되어 새로운 시작을 알립니다.">
+  <meta property="og:type" content="website">
+  <!-- Link-preview tags (KakaoTalk etc.) must use full https:// addresses.
+       og-image.jpg is cropped to 2:1, the shape KakaoTalk shows (800x400),
+       so it does not auto-crop the photo and risk cutting faces off. -->
+  <meta property="og:url" content="https://jiwon-wedding.github.io/">
+  <meta property="og:image" content="https://jiwon-wedding.github.io/static/og-image.jpg">
+  <meta property="og:image:width" content="1200">
+  <meta property="og:image:height" content="600">
+  <meta property="og:image:alt" content="박현규와 최지원의 웨딩 사진">
+  <title>박현규 ♥ 최지원 결혼합니다</title>
+
+  <!-- Google Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;1,300;1,400&family=Noto+Serif+KR:wght@200;300;400;500;600&family=Noto+Sans+KR:wght@300;400;500&display=swap" rel="stylesheet">
+
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+  <!-- ============================================ -->
+  <!-- ENVELOPE OPENING OVERLAY                      -->
+  <!-- ============================================ -->
+  <div id="envelope-overlay" class="envelope-overlay">
+    <div class="envelope-frame" aria-hidden="true"></div>
+    <div class="envelope-container" id="envelope-container">
+      <div class="envelope-stage">
+        <div class="envelope-float">
+
+          <!-- The invitation card: stays put, uncovered as the envelope drops -->
+          <div class="envelope-letter">
+            <div class="letter-content">
+              <span class="letter-ornament">&#10022;</span>
+              <p class="letter-en">HyunGyu &amp; JiWon</p>
+              <p class="letter-sub">저희 결혼합니다</p>
+            </div>
+          </div>
+
+          <!-- Envelope shell: slides down as one piece to reveal the card -->
+          <div class="envelope-shell">
+
+            <!-- Envelope paper, addressed on the lower half -->
+            <div class="envelope-panel">
+              <p class="panel-label">Wedding Announcement</p>
+              <p class="panel-names">현규 <span class="heart-icon">&#9829;</span> 지원</p>
+            </div>
+
+            <!-- Double-sided flap: outer paper + patterned liner -->
+            <div class="envelope-flap">
+              <div class="flap-face flap-outer"></div>
+              <div class="flap-face flap-inner"></div>
+            </div>
+
+            <div class="envelope-seal" aria-hidden="true">
+              <span class="seal-monogram">H<em>&amp;</em>J</span>
+            </div>
+
+          </div>
+
+        </div>
+        <div class="envelope-shadow" aria-hidden="true"></div>
+      </div>
+      <p class="envelope-tap-hint">봉투를 터치해 주세요</p>
+    </div>
+  </div>
+
+
+  <!-- ============================================ -->
+  <!-- MAIN CONTENT (hidden until envelope opens)    -->
+  <!-- ============================================ -->
+  <main id="main-content" class="main-content hidden">
+
+    <!-- ======== HERO SECTION ======== -->
+    <section id="hero" class="section hero-section">
+      <div class="hero-decoration top-decoration">
+        <svg viewBox="0 0 200 30" class="branch-svg">
+          <path d="M0,25 Q50,0 100,15 T200,5" fill="none" stroke="var(--primary)" stroke-width="1.5" opacity="0.5"/>
+          <circle cx="30" cy="18" r="3" fill="var(--primary-light)" opacity="0.6"/>
+          <circle cx="80" cy="8" r="2.5" fill="var(--primary)" opacity="0.4"/>
+          <circle cx="130" cy="13" r="3" fill="var(--primary-light)" opacity="0.5"/>
+          <circle cx="170" cy="7" r="2" fill="var(--primary)" opacity="0.3"/>
+        </svg>
+      </div>
+
+      <p class="hero-subtitle hero-reveal">Wedding Announcement</p>
+
+      <div class="hero-photo-frame hero-reveal">
+        <img src="static/images/0226_parkhyunkyu%2035.jpg" alt="박현규 & 최지원" class="hero-photo" loading="eager">
+      </div>
+
+      <div class="hero-names hero-reveal">
+        <span class="groom-name">박현규</span>
+        <span class="names-ampersand">&</span>
+        <span class="bride-name">최지원</span>
+      </div>
+
+      <p class="hero-message hero-reveal">저희, 결혼합니다</p>
+
+      <div class="hero-decoration bottom-decoration">
+        <svg viewBox="0 0 200 30" class="branch-svg">
+          <path d="M0,5 Q50,30 100,15 T200,25" fill="none" stroke="var(--primary)" stroke-width="1.5" opacity="0.5"/>
+          <circle cx="40" cy="20" r="2.5" fill="var(--primary-light)" opacity="0.5"/>
+          <circle cx="100" cy="17" r="3" fill="var(--primary)" opacity="0.4"/>
+          <circle cx="160" cy="22" r="2" fill="var(--primary-light)" opacity="0.6"/>
+        </svg>
+      </div>
+
+      <div class="scroll-indicator hero-reveal">
+        <span class="scroll-arrow">↓</span>
+      </div>
+    </section>
+
+    <!-- ======== GREETING SECTION ======== -->
+    <section id="greeting" class="section greeting-section">
+      <div class="section-inner">
+        <div class="greeting-divider animate-on-scroll">
+          <span class="divider-leaf">✦</span>
+        </div>
+
+        <div class="greeting-text animate-on-scroll">
+          <p>
+            저희를 아껴주시고 격려해 주신 분들께<br>
+            깊은 감사를 드립니다.
+          </p>
+          <p>
+            두 사람은 양가 부모님의 배려와 축복 속에<br>
+            결혼식이라는 무대 대신,<br>
+            서로의 일상을 다정하게 포개며<br>
+            조용히 부부의 연을 맺습니다.
+          </p>
+          <p>
+            저희 선택을 존중해 주신 가족분들 덕분에<br>
+            가벼운 발걸음으로 새로운 출발을 합니다.
+          </p>
+          <p>
+            직접 찾아뵙고 인사드리는 것이 도리이나,<br>
+            이렇게 글로 먼저 소식을 전하게 된 점<br>
+            너른 양해 부탁드립니다.
+          </p>
+          <p id="no-gift-text">
+            정중히 축의금은 사양합니다.<br>
+            진심이 담긴 축하 자체로 큰 기쁨이 됩니다.
+          </p>
+          <p>
+            언제나 저희를 응원해주신 분들의 마음을 기억하며,<br>
+            서로 사랑하고 배려하며 행복하게 살겠습니다.
+          </p>
+          <p class="greeting-closing">
+            감사합니다.
+          </p>
+        </div>
+
+        <div class="greeting-photo animate-on-scroll">
+          <img src="static/images/0226_parkhyunkyu%2040.jpg" alt="웨딩 사진" loading="lazy">
+        </div>
+      </div>
+    </section>
+
+    <!-- ======== PARENTS SECTION ======== -->
+    <section id="parents" class="section parents-section">
+      <div class="section-inner">
+        <h2 class="section-title animate-on-scroll">
+          <span class="title-en">Families</span>
+        </h2>
+
+        <div class="parents-card animate-on-scroll">
+          <div class="parents-row">
+            <div class="parent-side groom-side">
+              <p class="parent-relation">신랑측</p>
+              <p class="parent-names">
+                <span class="parent-father">박승종</span>
+                <span class="parent-dot">·</span>
+                <span class="parent-mother">김점옥</span>
+              </p>
+              <p class="parent-child">의 아들 <strong>현규</strong></p>
+            </div>
+            <div class="parents-divider-vertical"></div>
+            <div class="parent-side bride-side">
+              <p class="parent-relation">신부측</p>
+              <p class="parent-names">
+                <span class="parent-father">최동환</span>
+                <span class="parent-dot">·</span>
+                <span class="parent-mother">이명숙</span>
+              </p>
+              <p class="parent-child">의 딸 <strong>지원</strong></p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ======== GALLERY SECTION ======== -->
+    <section id="gallery" class="section gallery-section">
+      <div class="section-inner">
+        <h2 class="section-title animate-on-scroll">
+          <span class="title-en">Gallery</span>
+        </h2>
+
+        <div class="gallery-grid animate-on-scroll">
+          <div class="gallery-item" data-index="0">
+            <img src="static/images/0226_parkhyunkyu%2035.jpg" alt="갤러리 사진 1" loading="lazy">
+          </div>
+          <div class="gallery-item" data-index="1">
+            <img src="static/images/0226_parkhyunkyu%2040.jpg" alt="갤러리 사진 2" loading="lazy">
+          </div>
+          <div class="gallery-item" data-index="2">
+            <img src="static/images/0226_parkhyunkyu%20163.jpg" alt="갤러리 사진 3" loading="lazy">
+          </div>
+          <div class="gallery-item" data-index="3">
+            <img src="static/images/0226_parkhyunkyu%20242.jpg" alt="갤러리 사진 4" loading="lazy">
+          </div>
+          <div class="gallery-item" data-index="4">
+            <img src="static/images/0226_parkhyunkyu%20404.jpg" alt="갤러리 사진 5" loading="lazy">
+          </div>
+          <div class="gallery-item" data-index="5">
+            <img src="static/images/0226_parkhyunkyu%20440.jpg" alt="갤러리 사진 6" loading="lazy">
+          </div>
+          <div class="gallery-item" data-index="6">
+            <img src="static/images/0226_parkhyunkyu%20545.jpg" alt="갤러리 사진 7" loading="lazy">
+          </div>
+          <div class="gallery-item" data-index="7">
+            <img src="static/images/0226_parkhyunkyu%20606.jpg" alt="갤러리 사진 8" loading="lazy">
+          </div>
+          <div class="gallery-item" data-index="8">
+            <img src="static/images/0226_parkhyunkyu%20666.jpg" alt="갤러리 사진 9" loading="lazy">
+          </div>
+          <div class="gallery-item" data-index="9">
+            <img src="static/images/0226_parkhyunkyu%20773.jpg" alt="갤러리 사진 10" loading="lazy">
+          </div>
+          <div class="gallery-item" data-index="10">
+            <img src="static/images/0226_parkhyunkyu%20803.jpg" alt="갤러리 사진 11" loading="lazy">
+          </div>
+          <div class="gallery-item" data-index="11">
+            <img src="static/images/0226_parkhyunkyu%20922.jpg" alt="갤러리 사진 12" loading="lazy">
+          </div>
+          <div class="gallery-item" data-index="12">
+            <img src="static/images/0226_parkhyunkyu%20966.jpg" alt="갤러리 사진 13" loading="lazy">
+          </div>
+          <div class="gallery-item" data-index="13">
+            <img src="static/images/0226_parkhyunkyu%201010.jpg" alt="갤러리 사진 14" loading="lazy">
+          </div>
+          <div class="gallery-item" data-index="14">
+            <img src="static/images/0226_parkhyunkyu%201067.jpg" alt="갤러리 사진 15" loading="lazy">
+          </div>
+        </div>
+      </div>
+    </section>
+
+
+    <!-- ======== MONEY GIFT SECTION (계좌번호 영역) ======== -->
+    <!-- 💡 여기에 id="account-section"을 꼭 추가해 주세요! -->
+    <section id="account-section" class="section money-gift-section">
+      <div class="section-inner">
+        <!-- 계좌번호 관련 내용 (아코디언, 복사 버튼 등) -->
+         <p>계좌번호</p>
+      </div>
+    </section>
+
+
+    <!-- ======== FOOTER ======== -->
+    <footer id="footer" class="section footer-section">
+      <div class="section-inner">
+        <div class="footer-photo animate-on-scroll">
+          <img src="static/images/0226_parkhyunkyu%20545.jpg" alt="마무리 사진" loading="lazy">
+        </div>
+
+        <p class="footer-thanks animate-on-scroll">
+          감사합니다
+        </p>
+
+        <div class="footer-names animate-on-scroll">
+          <span>현규</span>
+          <span class="footer-heart">♥</span>
+          <span>지원</span>
+        </div>
+
+        <button id="share-btn" class="share-btn animate-on-scroll">
+          <span>공유하기</span>
+        </button>
+
+        <p class="footer-copyright">
+          © 2026 HyunGyu & JiWon
+        </p>
+      </div>
+    </footer>
+
+  </main>
+
+  <!-- Viewport-fixed layers. These live outside <main> on purpose: .main-content
+       carries a transform/filter for the reveal, and that makes it the containing
+       block for position:fixed, which would stop them staying put while scrolling. -->
+  <button id="bgm-toggle" class="bgm-toggle is-hidden" aria-label="배경음악 켜기/끄기" aria-pressed="false">
+    <span class="bgm-note" aria-hidden="true">♪</span>
+  </button>
+
+  <div id="petals-container" class="petals-container" aria-hidden="true"></div>
+
+  <!-- Lightbox Modal -->
+  <div id="lightbox" class="lightbox" role="dialog" aria-label="사진 보기">
+    <button class="lightbox-close" aria-label="닫기">&times;</button>
+    <div class="lightbox-counter"><span id="lightbox-current">1</span> / <span id="lightbox-total">15</span></div>
+    <div class="lightbox-image-wrapper">
+      <img id="lightbox-img" class="lightbox-img" src="" alt="갤러리 사진 확대">
+    </div>
+    <button class="lightbox-nav lightbox-prev" aria-label="이전 사진">‹</button>
+    <button class="lightbox-nav lightbox-next" aria-label="다음 사진">›</button>
+  </div>
+
+  <!-- Toast Notification -->
+  <div id="toast" class="toast" role="alert" aria-live="polite"></div>
+
+  <!-- BGM Audio -->
+  <audio id="bgm-audio" loop preload="auto" playsinline>
+    <source src="static/music/WEDDING_BGM.m4a" type="audio/mp4">
+  </audio>
+
+  <script src="script.js"></script>
+</body>
+</html>
