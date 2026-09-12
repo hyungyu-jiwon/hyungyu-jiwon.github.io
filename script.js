@@ -89,9 +89,10 @@ document.addEventListener('DOMContentLoaded', () => {
   // page, so this uses a two-step strategy: try immediately in case this
   // browser allows it, and otherwise start on the first gesture — in practice
   // the envelope tap, which is the first thing anyone does here.
-  // Full volume: the audio element can only attenuate, never amplify, so 1.0
-  // plays the file at its own recorded level. Raised from 0.5 (half volume).
-  const BGM_VOLUME = 1.0;
+  // The audio file itself was 25 dB too quiet (-39 LUFS), so it was amplified
+  // to a normal -15 LUFS instead of leaning on this number. 0.85 keeps a little
+  // headroom in case it should go louder still; 1.0 is the maximum.
+  const BGM_VOLUME = 0.85;
   const GESTURES = ['pointerdown', 'touchstart', 'keydown'];
   let fadeTimer = null;
   // set once the reader turns the music off themselves. Without this, the
