@@ -76,7 +76,9 @@ document.addEventListener('DOMContentLoaded', () => {
         // Start falling petals
         initPetals();
 
-      }, 1800);
+      // The envelope finishes dropping at ~1.5s and the card settles at ~1.6s;
+      // this holds the revealed card on screen for a beat before the page.
+      }, 2700);
     });
   }
 
@@ -368,10 +370,22 @@ document.addEventListener('DOMContentLoaded', () => {
 
       if (isExpanded) {
         header.setAttribute('aria-expanded', 'false');
+        // pin the current height first, so removing it animates down to 0
+        body.style.maxHeight = body.scrollHeight + 'px';
+        void body.offsetHeight;
+        body.style.maxHeight = '';
         body.setAttribute('hidden', '');
       } else {
         header.setAttribute('aria-expanded', 'true');
         body.removeAttribute('hidden');
+        // measure the real content height so nothing is ever clipped
+        body.style.maxHeight = body.scrollHeight + 'px';
+        body.addEventListener('transitionend', function done(e) {
+          if (e.propertyName !== 'max-height') return;
+          body.removeEventListener('transitionend', done);
+          // release the cap once open, so it survives rotation / font reflow
+          if (header.getAttribute('aria-expanded') === 'true') body.style.maxHeight = 'none';
+        });
       }
     });
   });
@@ -547,25 +561,16 @@ document.addEventListener('DOMContentLoaded', () => {
   }
 
   // ============================================
-  // 9. URL 파라미터에 따른 계좌번호, 안내문구 영역 숨김 처리
+  // 9. KAKAOPAY BUTTONS
   // ============================================
-  const urlParams = new URLSearchParams(window.location.search);
-  
-  const accountSection = document.getElementById('account-section');
-  const noGiftText = document.getElementById('no-gift-text');
-
-  if (urlParams.get('view') === 'guest') {
-    // 🔗 계좌번호가 [없는] 버전 (/?view=guest)
-    // 1. 계좌번호 영역을 숨깁니다. (사양 문구는 그대로 보임)
-    if (accountSection) {
-      accountSection.style.display = 'none';
-    }
-  } else {
-    // 🔗 계좌번호가 [있는] 일반 버전 (기본 주소 /)
-    // 1. "축의금은 사양합니다" 문구를 숨깁니다. (계좌번호는 그대로 보임)
-    if (noGiftText) {
-      noGiftText.style.display = 'none';
-    }
-  }
+  // The two versions of the invitation are switched by the small script in
+  // <head> (v-gift / v-guest classes), not here, so that it works even if
+  // this file fails to run.
+  //
+  // A KakaoPay button is only useful once a real transfer link is pasted in,
+  // so remove any that still holds the "#" placeholder.
+  document.querySelectorAll('.kakaopay-btn').forEach(btn => {
+    if (!/^https?:\/\//.test(btn.getAttribute('href') || '')) btn.remove();
+  });
 
 });

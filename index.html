@@ -9,8 +9,9 @@
   <meta property="og:type" content="website">
   <!-- Link-preview tags (KakaoTalk etc.) must use full https:// addresses.
        og-image.jpg is cropped to 2:1, the shape KakaoTalk shows (800x400),
-       so it does not auto-crop the photo and risk cutting faces off. -->
-  <meta property="og:url" content="https://jiwon-wedding.github.io/">
+       so it does not auto-crop the photo and risk cutting faces off.
+       No og:url on purpose: some scrapers treat it as the canonical link, which
+       could send /?view=guest recipients to the version showing the accounts. -->
   <meta property="og:image" content="https://jiwon-wedding.github.io/static/og-image.jpg">
   <meta property="og:image:width" content="1200">
   <meta property="og:image:height" content="600">
@@ -23,6 +24,19 @@
   <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;1,300;1,400&family=Noto+Serif+KR:wght@200;300;400;500;600&family=Noto+Sans+KR:wght@300;400;500&display=swap" rel="stylesheet">
 
   <link rel="stylesheet" href="style.css">
+
+  <!-- Two versions of the invitation, chosen by the link that was shared:
+         https://jiwon-wedding.github.io/            -> 계좌번호 보임 / "축의금 사양" 문구 숨김
+         https://jiwon-wedding.github.io/?view=guest -> 계좌번호 숨김 / "축의금 사양" 문구 보임
+       This runs in <head> so the correct version is painted from the very first
+       frame, and so it does not depend on script.js having run without errors. -->
+  <script>
+    (function () {
+      var guest = false;
+      try { guest = new URLSearchParams(location.search).get('view') === 'guest'; } catch (e) {}
+      document.documentElement.classList.add(guest ? 'v-guest' : 'v-gift');
+    })();
+  </script>
 </head>
 <body>
 
@@ -38,7 +52,11 @@
           <!-- The invitation card: stays put, uncovered as the envelope drops -->
           <div class="envelope-letter">
             <div class="letter-content">
-              <span class="letter-ornament">&#10022;</span>
+              <div class="letter-babies">
+                <img class="baby-photo" src="static/images/baby-groom.jpg" alt="신랑 어린 시절" width="320" height="320">
+                <span class="baby-heart" aria-hidden="true">&#9829;</span>
+                <img class="baby-photo" src="static/images/baby-bride.jpg" alt="신부 어린 시절" width="320" height="320">
+              </div>
               <p class="letter-en">HyunGyu &amp; JiWon</p>
               <p class="letter-sub">저희 결혼합니다</p>
             </div>
@@ -93,7 +111,7 @@
       <p class="hero-subtitle hero-reveal">Wedding Announcement</p>
 
       <div class="hero-photo-frame hero-reveal">
-        <img src="static/images/0226_parkhyunkyu%2035.jpg" alt="박현규 & 최지원" class="hero-photo" loading="eager">
+        <img src="static/images/hero.jpg" alt="박현규 & 최지원" class="hero-photo" loading="eager">
       </div>
 
       <div class="hero-names hero-reveal">
@@ -256,11 +274,61 @@
 
 
     <!-- ======== MONEY GIFT SECTION (계좌번호 영역) ======== -->
-    <!-- 💡 여기에 id="account-section"을 꼭 추가해 주세요! -->
+    <!-- 기본 링크에서만 보이고, /?view=guest 링크에서는 숨겨집니다. (<head> 스크립트 참고) -->
     <section id="account-section" class="section money-gift-section">
       <div class="section-inner">
-        <!-- 계좌번호 관련 내용 (아코디언, 복사 버튼 등) -->
-         <p>계좌번호</p>
+        <h2 class="section-title animate-on-scroll">
+          <span class="title-en">Congratulations</span>
+        </h2>
+
+        <p class="money-gift-desc animate-on-scroll">
+          축하의 마음을 전하고 싶다고 말씀해 주신 분들을 위해<br>
+          계좌번호를 함께 안내드립니다.<br>
+          따뜻한 마음에 깊이 감사드립니다.
+        </p>
+
+        <div class="gift-card animate-on-scroll">
+          <button class="gift-card-header" type="button" aria-expanded="false" aria-controls="gift-account-groom">
+            <span class="gift-card-icon" aria-hidden="true">✦</span>
+            <span class="gift-card-label">신랑측 계좌번호</span>
+            <span class="gift-card-arrow" aria-hidden="true">▾</span>
+          </button>
+          <div class="gift-card-body" id="gift-account-groom" hidden>
+            <div class="account-item">
+              <p class="account-holder"><span class="account-relation">신랑 </span>박현규</p>
+              <p class="account-number">국민은행  166102-04-137167</p>
+              <div class="account-actions">
+                <button class="copy-btn" type="button" data-account="16610204137167">계좌번호 복사</button>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="gift-card animate-on-scroll">
+          <button class="gift-card-header" type="button" aria-expanded="false" aria-controls="gift-account-bride">
+            <span class="gift-card-icon" aria-hidden="true">✦</span>
+            <span class="gift-card-label">신부측 계좌번호</span>
+            <span class="gift-card-arrow" aria-hidden="true">▾</span>
+          </button>
+          <div class="gift-card-body" id="gift-account-bride" hidden>
+            <div class="account-item">
+              <p class="account-holder"><span class="account-relation">신부 아버지 </span>최동환</p>
+              <p class="account-number">국민은행  619-24-0140-170</p>
+              <div class="account-actions">
+                <button class="copy-btn" type="button" data-account="619240140170">계좌번호 복사</button>
+                <a class="kakaopay-btn" href="https://qr.kakaopay.com/FL6RWBtpC" target="_blank" rel="noopener">카카오페이 송금</a>
+              </div>
+            </div>
+            <div class="account-item">
+              <p class="account-holder"><span class="account-relation">신부 어머니 </span>이명숙</p>
+              <p class="account-number">국민은행  619-21-0146-245</p>
+              <div class="account-actions">
+                <button class="copy-btn" type="button" data-account="619210146245">계좌번호 복사</button>
+                <a class="kakaopay-btn" href="https://qr.kakaopay.com/FOoX8wYPf" target="_blank" rel="noopener">카카오페이 송금</a>
+              </div>
+            </div>
+          </div>
+        </div>
       </div>
     </section>
 

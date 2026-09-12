@@ -526,11 +526,30 @@ button {
   text-align: center;
 }
 
-.letter-ornament {
-  display: block;
-  font-size: 0.62rem;
+/* childhood photos of the two of them, on the card inside the envelope */
+.letter-babies {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 9px;
+  margin-bottom: 11px;
+}
+
+.baby-photo {
+  width: 56px;
+  height: 56px;
+  border-radius: 50%;
+  object-fit: cover;
+  background: var(--white);
+  box-shadow:
+    0 0 0 1px rgba(74, 144, 184, 0.18),
+    0 2px 6px rgba(74, 144, 184, 0.22);
+}
+
+.baby-heart {
+  font-size: 0.66rem;
+  line-height: 1;
   color: var(--accent-warm);
-  margin-bottom: 10px;
 }
 
 .letter-en {
@@ -825,7 +844,19 @@ button {
    SECTION: GREETING
    ============================================ */
 .greeting-section {
-  background: var(--white);
+  background-color: var(--white);
+  /* Photo-collage backdrop behind the greeting. The white layer sits on top of
+     the photo so the text keeps its contrast; the photo is scaled to the width
+     and tiled downwards, because the section is far taller than the image and
+     "cover" would crop the outer photos away.
+     Drop the collage in at static/images/greeting-bg.jpg. If the file is not
+     there, the section simply stays white. */
+  background-image:
+    linear-gradient(rgba(255, 255, 255, 0.65), rgba(255, 255, 255, 0.65)),
+    url('static/images/greeting-bg.jpg');
+  background-size: auto, 100% auto;
+  background-repeat: repeat, repeat-y;
+  background-position: center, top center;
 }
 
 .greeting-text {
@@ -1142,7 +1173,9 @@ button {
 }
 
 .gift-card-body:not([hidden]) {
-  max-height: 300px;
+  /* Generous fallback only. The real height is measured and set inline by the
+     accordion script, so any number of accounts fits without being cut off. */
+  max-height: 1600px;
   padding: 0 20px 20px;
 }
 
@@ -1158,6 +1191,16 @@ button {
   padding: 16px;
   margin-bottom: 10px;
   text-align: left;
+}
+
+.account-item:last-child {
+  margin-bottom: 0;
+}
+
+/* "신부 아버지" etc. sits quieter than the name itself */
+.account-relation {
+  color: var(--text-light);
+  font-size: 0.78rem;
 }
 
 .account-bank {
@@ -1304,6 +1347,44 @@ button {
   font-size: 0.7rem;
   color: var(--text-muted);
   letter-spacing: 0.1em;
+}
+
+/* ============================================
+   TWO VERSIONS (switched by the <head> script)
+   v-gift  : 계좌번호 보임, "축의금 사양" 문구 숨김   (기본 링크)
+   v-guest : 계좌번호 숨김, "축의금 사양" 문구 보임   (/?view=guest)
+   Both are in the HTML, so only one rule has to hide the other half.
+   ============================================ */
+html.v-gift #no-gift-text { display: none; }
+html.v-guest #account-section { display: none; }
+
+/* Account row buttons */
+.account-actions {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 8px;
+}
+
+.kakaopay-btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 4px;
+  padding: 7px 16px;
+  font-family: var(--font-sans);
+  font-size: 0.78rem;
+  font-weight: 400;
+  color: #3C1E1E;
+  background: #FEE500;
+  border: 1px solid rgba(60, 30, 30, 0.10);
+  border-radius: 20px;
+  text-decoration: none;
+  transition: all 0.2s;
+}
+
+.kakaopay-btn:active {
+  transform: scale(0.96);
+  filter: brightness(0.96);
 }
 
 /* ============================================
