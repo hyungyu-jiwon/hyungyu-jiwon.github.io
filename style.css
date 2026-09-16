@@ -793,9 +793,29 @@ button {
 
 .hero-names {
   display: flex;
-  align-items: center;
-  gap: 14px;
+  /* baseline, not center: keeps the ampersand level with the names rather than
+     with the middle of the name + parents block */
+  align-items: baseline;
+  gap: 12px;
   margin-top: 10px;
+}
+
+.name-column {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 7px;
+}
+
+.name-parents {
+  font-family: var(--font-sans);
+  font-size: 0.68rem;
+  font-weight: 300;
+  line-height: 1.5;
+  letter-spacing: 0.01em;
+  color: var(--text-muted);
+  /* keep-all so a narrow screen breaks at the space, not mid-word */
+  word-break: keep-all;
 }
 
 .groom-name,
