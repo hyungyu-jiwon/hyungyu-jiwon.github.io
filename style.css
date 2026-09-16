@@ -887,6 +887,11 @@ button {
   color: var(--text);
   letter-spacing: 0.02em;
   margin-bottom: 36px;
+  /* The lines are hand-broken with <br> for a 430px screen. On narrower
+     phones they have to wrap, and Korean breaks between any two characters
+     by default, which splits words in half. keep-all wraps at spaces instead. */
+  word-break: keep-all;
+  overflow-wrap: break-word;
 }
 
 .greeting-text p {
