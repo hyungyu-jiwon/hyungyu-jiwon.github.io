@@ -288,7 +288,7 @@ button {
   flex-direction: column;
   justify-content: flex-end;
   align-items: center;
-  padding: 0 22px 26px;
+  padding: 0 20px 22px;
   text-align: center;
 }
 
@@ -321,13 +321,37 @@ button {
 }
 
 .panel-names {
-  margin-top: 11px;
+  margin-top: 9px;
+  display: flex;
+  align-items: baseline;
+  gap: 9px;
+}
+
+.panel-name-col {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 3px;
+}
+
+.panel-name {
   font-family: var(--font-serif-kr);
-  font-size: 1.2rem;
+  font-size: 1.14rem;
   font-weight: 400;
   line-height: 1.3;
   letter-spacing: 0.14em;
   color: var(--text);
+}
+
+/* parents' names, small enough to sit on the envelope without crowding the seal */
+.panel-parents {
+  font-family: var(--font-sans);
+  font-size: 0.5rem;
+  font-weight: 300;
+  line-height: 1.4;
+  letter-spacing: 0.02em;
+  color: var(--text-light);
+  white-space: nowrap;
 }
 
 .heart-icon {
@@ -343,7 +367,7 @@ button {
   top: 0;
   left: 0;
   width: 280px;
-  height: 92px;
+  height: 86px;
   transform-origin: top center;
   transform-style: preserve-3d;
   /* translateZ rides the rotation: +2px closed (above the paper),
@@ -401,7 +425,7 @@ button {
 .envelope-seal {
   position: absolute;
   left: 50%;
-  top: 92px;
+  top: 86px;
   width: 46px;
   height: 46px;
   border-radius: 50%;
@@ -597,7 +621,7 @@ button {
 .envelope-spark {
   position: absolute;
   left: 50%;
-  top: 92px;
+  top: 86px;
   width: 6px;
   height: 6px;
   border-radius: 50%;
