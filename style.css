@@ -1191,154 +1191,7 @@ button {
 .lightbox-prev { left: 0; }
 .lightbox-next { right: 0; }
 
-/* ============================================
-   SECTION: MONEY GIFT (축의금)
-   ============================================ */
-.money-gift-section {
-  background: linear-gradient(160deg, var(--primary-pale) 0%, #d8eef8 50%, var(--primary-light) 100%);
-}
-
-.money-gift-desc {
-  font-family: var(--font-sans);
-  font-size: 0.85rem;
-  font-weight: 300;
-  color: var(--text-light);
-  line-height: 1.9;
-  margin-bottom: 30px;
-}
-
-/* Gift Card (Glassmorphism accordion) */
-.gift-card {
-  width: 100%;
-  max-width: 340px;
-  margin-bottom: 14px;
-  border-radius: 16px;
-  background: rgba(255, 255, 255, 0.45);
-  backdrop-filter: blur(12px);
-  -webkit-backdrop-filter: blur(12px);
-  border: 1px solid rgba(255, 255, 255, 0.6);
-  box-shadow: 0 8px 32px rgba(74, 144, 184, 0.1);
-  overflow: hidden;
-  transition: transform 0.2s;
-}
-
-.gift-card:active {
-  transform: scale(0.98);
-}
-
-.gift-card-header {
-  width: 100%;
-  display: flex;
-  align-items: center;
-  gap: 10px;
-  padding: 18px 20px;
-  font-family: var(--font-sans);
-  font-size: 0.9rem;
-  font-weight: 400;
-  color: var(--text);
-  transition: background 0.2s;
-}
-
-.gift-card-header:hover {
-  background: rgba(255, 255, 255, 0.3);
-}
-
-.gift-card-icon {
-  font-size: 1.3rem;
-}
-
-.gift-card-label {
-  flex: 1;
-  text-align: left;
-}
-
-.gift-card-arrow {
-  font-size: 0.8rem;
-  color: var(--text-muted);
-  transition: transform 0.3s ease;
-}
-
-.gift-card-header[aria-expanded="true"] .gift-card-arrow {
-  transform: rotate(180deg);
-}
-
-/* Accordion body */
-.gift-card-body {
-  overflow: hidden;
-  max-height: 0;
-  transition: max-height 0.4s ease, padding 0.4s ease;
-}
-
-.gift-card-body:not([hidden]) {
-  /* Generous fallback only. The real height is measured and set inline by the
-     accordion script, so any number of accounts fits without being cut off. */
-  max-height: 1600px;
-  padding: 0 20px 20px;
-}
-
-.gift-card-body[hidden] {
-  display: block !important;
-  max-height: 0;
-  padding: 0 20px;
-}
-
-.account-item {
-  background: rgba(255, 255, 255, 0.6);
-  border-radius: 12px;
-  padding: 16px;
-  margin-bottom: 10px;
-  text-align: left;
-}
-
-.account-item:last-child {
-  margin-bottom: 0;
-}
-
 /* "신부 아버지" etc. sits quieter than the name itself */
-.account-relation {
-  color: var(--text-light);
-  font-size: 0.78rem;
-}
-
-.account-bank {
-  font-size: 0.75rem;
-  color: var(--text-muted);
-  margin-bottom: 4px;
-}
-
-.account-holder {
-  font-size: 0.85rem;
-  font-weight: 400;
-  color: var(--text);
-  margin-bottom: 4px;
-}
-
-.account-number {
-  font-size: 0.9rem;
-  font-weight: 400;
-  color: var(--text);
-  letter-spacing: 0.05em;
-  margin-bottom: 10px;
-}
-
-.copy-btn {
-  display: inline-flex;
-  align-items: center;
-  gap: 4px;
-  padding: 7px 16px;
-  font-size: 0.78rem;
-  font-weight: 400;
-  color: var(--primary-deep);
-  background: var(--white);
-  border: 1px solid var(--primary-light);
-  border-radius: 20px;
-  transition: all 0.2s;
-}
-
-.copy-btn:active {
-  background: var(--primary-pale);
-  transform: scale(0.96);
-}
 
 /* KakaoPay Button */
 .kakao-pay-btn-wrapper {
@@ -1419,26 +1272,6 @@ button {
   font-size: 0.8rem;
 }
 
-.share-btn {
-  display: inline-flex;
-  align-items: center;
-  gap: 6px;
-  padding: 12px 30px;
-  font-size: 0.85rem;
-  font-weight: 400;
-  color: var(--white);
-  background: var(--primary-deep);
-  border-radius: 30px;
-  transition: all 0.2s;
-  box-shadow: 0 4px 15px rgba(74, 144, 184, 0.3);
-  margin-bottom: 30px;
-}
-
-.share-btn:active {
-  transform: scale(0.96);
-  background: #3d7d9e;
-}
-
 .footer-copyright {
   font-family: var(--font-serif-en);
   font-size: 0.7rem;
@@ -1446,43 +1279,7 @@ button {
   letter-spacing: 0.1em;
 }
 
-/* ============================================
-   TWO VERSIONS (switched by the <head> script)
-   v-gift  : 계좌번호 보임, "축의금 사양" 문구 숨김   (기본 링크)
-   v-guest : 계좌번호 숨김, "축의금 사양" 문구 보임   (/?view=guest)
-   Both are in the HTML, so only one rule has to hide the other half.
-   ============================================ */
-html.v-gift #no-gift-text { display: none; }
-html.v-guest #account-section { display: none; }
-
 /* Account row buttons */
-.account-actions {
-  display: flex;
-  flex-wrap: wrap;
-  align-items: center;
-  gap: 8px;
-}
-
-.kakaopay-btn {
-  display: inline-flex;
-  align-items: center;
-  gap: 4px;
-  padding: 7px 16px;
-  font-family: var(--font-sans);
-  font-size: 0.78rem;
-  font-weight: 400;
-  color: #3C1E1E;
-  background: #FEE500;
-  border: 1px solid rgba(60, 30, 30, 0.10);
-  border-radius: 20px;
-  text-decoration: none;
-  transition: all 0.2s;
-}
-
-.kakaopay-btn:active {
-  transform: scale(0.96);
-  filter: brightness(0.96);
-}
 
 /* ============================================
    BGM FLOATING BUTTON
@@ -1580,30 +1377,6 @@ html.v-guest #account-section { display: none; }
   border-radius: 150% 0 150% 0;
   pointer-events: none;
   opacity: 0;
-}
-
-/* ============================================
-   TOAST NOTIFICATION
-   ============================================ */
-.toast {
-  position: fixed;
-  bottom: -60px;
-  left: 50%;
-  transform: translateX(-50%);
-  padding: 12px 26px;
-  background: rgba(44, 62, 80, 0.92);
-  color: var(--white);
-  font-size: 0.85rem;
-  font-weight: 400;
-  border-radius: 30px;
-  z-index: 99999;
-  transition: bottom 0.4s cubic-bezier(0.68, -0.3, 0.26, 1.3);
-  white-space: nowrap;
-  box-shadow: 0 6px 20px rgba(0, 0, 0, 0.2);
-}
-
-.toast.show {
-  bottom: 90px;
 }
 
 /* ============================================

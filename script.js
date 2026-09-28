@@ -357,96 +357,7 @@ document.addEventListener('DOMContentLoaded', () => {
   }
 
   // ============================================
-  // 5. ACCOUNT NUMBER COPY & ACCORDION
-  // ============================================
-  const giftCardHeaders = document.querySelectorAll('.gift-card-header');
-  const copyButtons = document.querySelectorAll('.copy-btn');
-
-  // Accordion toggle
-  giftCardHeaders.forEach(header => {
-    header.addEventListener('click', () => {
-      const isExpanded = header.getAttribute('aria-expanded') === 'true';
-      const bodyId = header.getAttribute('aria-controls');
-      const body = document.getElementById(bodyId);
-
-      if (!body) return;
-
-      if (isExpanded) {
-        header.setAttribute('aria-expanded', 'false');
-        // pin the current height first, so removing it animates down to 0
-        body.style.maxHeight = body.scrollHeight + 'px';
-        void body.offsetHeight;
-        body.style.maxHeight = '';
-        body.setAttribute('hidden', '');
-      } else {
-        header.setAttribute('aria-expanded', 'true');
-        body.removeAttribute('hidden');
-        // measure the real content height so nothing is ever clipped
-        body.style.maxHeight = body.scrollHeight + 'px';
-        body.addEventListener('transitionend', function done(e) {
-          if (e.propertyName !== 'max-height') return;
-          body.removeEventListener('transitionend', done);
-          // release the cap once open, so it survives rotation / font reflow
-          if (header.getAttribute('aria-expanded') === 'true') body.style.maxHeight = 'none';
-        });
-      }
-    });
-  });
-
-  // Copy to clipboard
-  copyButtons.forEach(btn => {
-    btn.addEventListener('click', (e) => {
-      e.stopPropagation();
-      const accountNo = btn.getAttribute('data-account');
-      if (!accountNo) return;
-
-      copyToClipboard(accountNo).then(() => {
-        showToast('계좌번호가 복사되었습니다');
-      }).catch(() => {
-        showToast('복사에 실패했습니다');
-      });
-    });
-  });
-
-  async function copyToClipboard(text) {
-    if (navigator.clipboard && window.isSecureContext) {
-      return navigator.clipboard.writeText(text);
-    }
-    // Fallback
-    const textarea = document.createElement('textarea');
-    textarea.value = text;
-    textarea.style.position = 'fixed';
-    textarea.style.left = '-9999px';
-    document.body.appendChild(textarea);
-    textarea.focus();
-    textarea.select();
-    try {
-      document.execCommand('copy');
-      textarea.remove();
-      return Promise.resolve();
-    } catch (err) {
-      textarea.remove();
-      return Promise.reject(err);
-    }
-  }
-
-  // ============================================
-  // 6. TOAST NOTIFICATION
-  // ============================================
-  function showToast(message) {
-    const toast = document.getElementById('toast');
-    if (!toast) return;
-
-    toast.textContent = message;
-    toast.classList.add('show');
-
-    setTimeout(() => {
-      toast.classList.remove('show');
-    }, 2200);
-  }
-
-  // ============================================
-  // 7. FALLING PETALS ANIMATION
+  // 5. FALLING PETALS ANIMATION
   // ============================================
   const petalsContainer = document.getElementById('petals-container');
   const MAX_PETALS = 25;
@@ -534,46 +445,6 @@ document.addEventListener('DOMContentLoaded', () => {
         animatePetals();
       }
     }
-  });
-
-  // ============================================
-  // 8. SHARE BUTTON
-  // ============================================
-  const shareBtn = document.getElementById('share-btn');
-  if (shareBtn) {
-    shareBtn.addEventListener('click', async () => {
-      const shareData = {
-        title: '박현규 ♥ 최지원 결혼합니다',
-        text: '저희 두 사람이 사랑으로 하나 되어 새로운 시작을 알립니다.',
-        url: window.location.href
-      };
-
-      if (navigator.share) {
-        try {
-          await navigator.share(shareData);
-        } catch (err) {
-          // User cancelled or error
-        }
-      } else {
-        // Fallback: copy URL
-        copyToClipboard(window.location.href).then(() => {
-          showToast('링크가 복사되었습니다');
-        });
-      }
-    });
-  }
-
-  // ============================================
-  // 9. KAKAOPAY BUTTONS
-  // ============================================
-  // The two versions of the invitation are switched by the small script in
-  // <head> (v-gift / v-guest classes), not here, so that it works even if
-  // this file fails to run.
-  //
-  // A KakaoPay button is only useful once a real transfer link is pasted in,
-  // so remove any that still holds the "#" placeholder.
-  document.querySelectorAll('.kakaopay-btn').forEach(btn => {
-    if (!/^https?:\/\//.test(btn.getAttribute('href') || '')) btn.remove();
   });
 
 });
